@@ -17,9 +17,23 @@ public class ReaderProvider {
         Scanner scanner = new Scanner(System.in);
         System.out.println("---- Создание читателя ----");
         System.out.println("Имя читателя: ");
+        String name = scanner.nextLine();
+        System.out.println("Фамилия читателя: ");
+        String surname = scanner.nextLine();
+        System.out.println("День рождения: ");
+        int day  = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Месяц рождения: ");
+        int month  = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Год рождения: ");
+        int year  = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Телефон читателя: ");
+        String phone = scanner.nextLine();
         
-                
+        Reader reader = new Reader(name, surname, day, month, year, phone);
 
-        return null;
+        return reader;
     }
 }
