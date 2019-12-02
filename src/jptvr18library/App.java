@@ -8,6 +8,7 @@ import java.util.Scanner;
 import myclasses.BookProvider;
 import myclasses.HistoryProvider;
 import myclasses.ReaderProvider;
+import storage.SaverToStorage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,6 +24,13 @@ public class App {
 private ArrayList<Book> books = new ArrayList<>();
 private ArrayList<Reader> readers = new ArrayList<>();
 private ArrayList<History> histories = new ArrayList<>();
+SaverToStorage saverToStorage;
+    public App() {
+        this.saverToStorage = new SaverToStorage();
+        this.books.addAll(saverToStorage.loadBooks());
+        this.readers.addAll(saverToStorage.loadReaders());
+        this.histories.addAll(saverToStorage.loadHistories());
+    }
 
     public void run() {
         System.out.println("Консольная библиотека");
@@ -49,6 +57,7 @@ private ArrayList<History> histories = new ArrayList<>();
                 case 1:
                     BookProvider bookProvider = new BookProvider();
                     books.add(bookProvider.createBook());
+                    saverToStorage.saveBooks(books);
                     break;
             //Список книг
                 case 2:
@@ -61,15 +70,18 @@ private ArrayList<History> histories = new ArrayList<>();
             //Выдать книгу
                     ReaderProvider readerProvider = new ReaderProvider();
                     readers.add(readerProvider.createReader());
+                    saverToStorage.saveReaders(readers);
                     break;
                 case 4:
                     HistoryProvider historyProvider = new HistoryProvider();
                     histories.add(historyProvider.takeOnBook(books, readers));
+                    saverToStorage.saveHistories(histories);
                     break;
             //Вернуть книгу
                 case 5:
                     historyProvider = new HistoryProvider();
-                    histories = historyProvider.returnBook(histories);
+                    historyProvider.returnBook(histories);
+                    saverToStorage.saveHistories(histories);
                     break;
                 case 6:
                     History history = null;
