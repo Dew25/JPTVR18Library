@@ -23,8 +23,9 @@ import java.util.logging.Logger;
  *
  * @author Melnikov
  */
-public class SaverToFile {
+public class SaverToFile implements Saveble{
 
+    @Override
     public void saveBooks(ArrayList<Book> books) {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
@@ -56,6 +57,7 @@ public class SaverToFile {
         
     }
 
+    @Override
     public Collection<? extends Book> loadBooks() {
         ArrayList<Book> books = new ArrayList<>();
         FileInputStream fileInputStream = null;
@@ -73,6 +75,7 @@ public class SaverToFile {
         }
         return books;
     }
+    @Override
         public void saveReaders(ArrayList<Reader> readers) {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
@@ -104,6 +107,7 @@ public class SaverToFile {
         
     }
 
+    @Override
     public Collection<? extends Reader> loadReaders() {
         ArrayList<Reader> readers = new ArrayList<>();
         FileInputStream fileInputStream = null;
@@ -121,6 +125,7 @@ public class SaverToFile {
         }
         return readers;
     }
+    @Override
     public void saveHistories(ArrayList<History> histories) {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
@@ -152,6 +157,7 @@ public class SaverToFile {
         
     }
 
+    @Override
     public Collection<? extends History> loadHistories() {
         ArrayList<History> histories = new ArrayList<>();
         FileInputStream fileInputStream = null;
