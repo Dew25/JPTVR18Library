@@ -10,7 +10,6 @@ import myclasses.HistoryProvider;
 import myclasses.ReaderProvider;
 import storage.Saveble;
 import storage.SaverToBase;
-import storage.SaverToFile;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,8 +29,8 @@ private Saveble saveble;
     public App() {
        // this.saveble = new SaverToFile();
         this.saveble = new SaverToBase();
-       // this.books.addAll(saveble.loadBooks());
-       // this.readers.addAll(saveble.loadReaders());
+        this.books.addAll(saveble.loadBooks());
+        this.readers.addAll(saveble.loadReaders());
        // this.histories.addAll(saveble.loadHistories());
     }
 
